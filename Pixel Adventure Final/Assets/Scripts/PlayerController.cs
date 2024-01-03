@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
 
 
    private void HandleMovement()
-   {
+   {    
+        // Do nothing if the player's rigidbody has been set to 'static', signifying they have died (A dead player should not be able to move)
+        if (_rb.bodyType == RigidbodyType2D.Static) return;
+
        // MOVEMENT
        _xInput = Input.GetAxisRaw("Horizontal"); // Store movement input from the user (LEFT & RIGHT)
        _rb.velocity = new Vector2(_xInput * _moveSpeed, _rb.velocity.y); // Apply the xInput to the velocity of the player & maintain the player's vertical velocity (jumping/fallig)
@@ -109,6 +112,23 @@ public class PlayerController : MonoBehaviour
    {
        // Returns true or false depending if the player is currently on the ground or not
        return Physics2D.BoxCast(_bCollider.bounds.center, _bCollider.bounds.size, 0f, Vector2.down, .1f, _groundLayer);
+   }
+
+    // When the player hits an object marked as a trigger
+   private void OnTriggerEnter2D(Collider2D other)
+   {
+        // If that object has the tag "Trap"
+        if (other.CompareTag("Trap"))
+        {
+            // Trigger the player's death animation
+            _anim.SetTrigger("Death");
+
+            // Stop the player from moving 
+             _rb.bodyType = RigidbodyType2D.Static;
+
+            // Tell the Game Manager to reset the scene
+            GameManager.Instance.GameOver();
+        }
    }
 
 }

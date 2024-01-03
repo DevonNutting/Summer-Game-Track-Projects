@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -50,6 +51,20 @@ public class GameManager : MonoBehaviour
        // Updates the Player's points by the given value
        _playerPoints += value;
        UdpateUI();
+   }
+
+
+   private void RestartCurrentLevel()
+   {
+       // Restarts the curernt level, can only be called in this script
+       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+   }
+
+
+   public void GameOver()
+   {
+       // This method is called from the Player on death so the Manager can reset the stage
+       Invoke("RestartCurrentLevel", 2f);
    }
 
 
