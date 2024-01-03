@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
    private Animator _anim;
    private SpriteRenderer _sRenderer;
    private float _xInput;
+   private BoxCollider2D _bCollider;
 
 
    [SerializeField, Tooltip("The amount of force the player jumps up with")]
@@ -28,12 +29,17 @@ public class PlayerController : MonoBehaviour
    private float _moveSpeed = 5f;
 
 
+   [SerializeField, Tooltip("The layer on wich the ground sits")]
+   private LayerMask _groundLayer;
+
+
    // Start is called before the first frame update
    void Start()
    {
        _rb = GetComponent<Rigidbody2D>();
        _anim = GetComponent<Animator>();
        _sRenderer = GetComponent<SpriteRenderer>();
+       _bCollider = GetComponent<BoxCollider2D>();
    }
 
 
@@ -49,9 +55,9 @@ public class PlayerController : MonoBehaviour
    {
        // MOVEMENT
        _xInput = Input.GetAxisRaw("Horizontal"); // Store movement input from the user (LEFT & RIGHT)
-       _rb.velocity = new Vector2(_xInput * _moveSpeed, _rb.velocity.y); // Apply the xInput to the velocity of the player & maintain the player's vertical velocity (jumping/falling)
+       _rb.velocity = new Vector2(_xInput * _moveSpeed, _rb.velocity.y); // Apply the xInput to the velocity of the player & maintain the player's vertical velocity (jumping/fallig)
        // JUMP
-       if (Input.GetButtonDown("Jump")) // If the player presses the jump button...
+       if (Input.GetButtonDown("Jump") && isGrounded()) // If the player presses the jump button & the player is on the ground...
        {
            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce); // Maintain the player's horizontal velocity & add a velocity upward
        }
@@ -97,7 +103,17 @@ public class PlayerController : MonoBehaviour
 
        _anim.SetInteger("moveState", (int)moveState);
    }
+
+
+   private bool isGrounded()
+   {
+       // Returns true or false depending if the player is currently on the ground or not
+       return Physics2D.BoxCast(_bCollider.bounds.center, _bCollider.bounds.size, 0f, Vector2.down, .1f, _groundLayer);
+   }
+
 }
+
+
 
 
 
