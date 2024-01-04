@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
    private void Start()
    {
         UdpateUI();
+        AudioManager.Instance.PlaySound("MainTheme");
    }
 
 
@@ -59,18 +60,24 @@ public class GameManager : MonoBehaviour
        AudioManager.Instance.PlaySound("MainTheme");
    }
 
+   private void LoadStartMenu()
+   {
+        // Load the Start Menu Scene
+        SceneManager.LoadScene(0);
+   }
+
 
    public void GameOver()
    {
        // This method is called from the Player on death so the Manager can reset the stage
-       Invoke("RestartCurrentLevel", 3f);
+       Invoke("LoadStartMenu", 3f);
    }
 
    public void LevelComplete()
    {
         // this method is called when the player touches the flag goal at the end of the level
         // Reset the level to play again; Alternatively, this is where you can load the next level of your game
-        Invoke("RestartCurrentLevel", 3f);
+        Invoke("LoadStartMenu", 3f);
    }
 
 
