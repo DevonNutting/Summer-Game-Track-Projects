@@ -58,13 +58,14 @@ public class GameManager : MonoBehaviour
    {
        // Restarts the curernt level, can only be called in this script
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       AudioManager.Instance.PlaySound("MainTheme");
    }
 
 
    public void GameOver()
    {
        // This method is called from the Player on death so the Manager can reset the stage
-       Invoke("RestartCurrentLevel", 2f);
+       Invoke("RestartCurrentLevel", 3f);
    }
 
 

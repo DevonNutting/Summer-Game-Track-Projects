@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
        if (Input.GetButtonDown("Jump") && isGrounded()) // If the player presses the jump button & the player is on the ground...
        {
            _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce); // Maintain the player's horizontal velocity & add a velocity upward
+            AudioManager.Instance.PlaySound("PlayerJump");         // Tell the Audio Manager to play the jump sound effect
+
        }
    }
 
@@ -122,6 +124,12 @@ public class PlayerController : MonoBehaviour
         {
             // Trigger the player's death animation
             _anim.SetTrigger("Death");
+
+            // Tell the Audio Manager to play the death audio file
+            AudioManager.Instance.PlaySound("PlayerDeath");
+
+            // Tell the Audio Manager to stop playing the theme music (for dramatic effect)
+            AudioManager.Instance.StopSound("MainTheme");
 
             // Stop the player from moving 
              _rb.bodyType = RigidbodyType2D.Static;

@@ -13,6 +13,9 @@ public class Pickup : MonoBehaviour
             // ... Destroy this gameObject
             Destroy(gameObject);
 
+            // Tell the Audio Manager to play the audio file
+            AudioManager.Instance.PlaySound("Pickup");
+
             // Tell the Game Manager to gain points & update the score text
             GameManager.Instance.UpdateScore(100);
         } 
