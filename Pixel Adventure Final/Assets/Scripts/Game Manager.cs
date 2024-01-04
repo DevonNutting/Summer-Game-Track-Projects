@@ -8,16 +8,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-
    [SerializeField][Tooltip("Reference to the point text game object, assign in editor")]
    private TextMeshProUGUI _pointText;
-
 
    [SerializeField][Tooltip("Value for the player's current points")]
    private int _playerPoints = 0;
 
-
    public static GameManager Instance {get; private set;}
+
    private void Awake()
    {
        if (Instance != null)
@@ -35,7 +33,7 @@ public class GameManager : MonoBehaviour
 
    private void Start()
    {
-       UdpateUI();
+        UdpateUI();
    }
 
 
@@ -66,6 +64,13 @@ public class GameManager : MonoBehaviour
    {
        // This method is called from the Player on death so the Manager can reset the stage
        Invoke("RestartCurrentLevel", 3f);
+   }
+
+   public void LevelComplete()
+   {
+        // this method is called when the player touches the flag goal at the end of the level
+        // Reset the level to play again; Alternatively, this is where you can load the next level of your game
+        Invoke("RestartCurrentLevel", 3f);
    }
 
 
