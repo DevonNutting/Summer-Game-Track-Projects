@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
        }
 
 
-       DontDestroyOnLoad(gameObject); // Do not destroy the AudioManager between scenes, we need the sound effects intact al throughout gameplay
+       DontDestroyOnLoad(gameObject); // Do not destroy the AudioManager between scenes, we need the sound effects intact all throughout gameplay
 
 
        foreach (Sound s in sounds) // For each sound objecy in the sounds array...

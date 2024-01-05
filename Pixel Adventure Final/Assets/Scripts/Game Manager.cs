@@ -18,15 +18,16 @@ public class GameManager : MonoBehaviour
 
    private void Awake()
    {
+        //  If the 'Instance' var is already assigned
        if (Instance != null)
        {
            Debug.LogError("There's more than one GameManager! " + transform + " - " + Instance);
-           Destroy(gameObject);
+           Destroy(gameObject); // Destroy this extra copy of GameManager (There can only be one)
            return;
        }
-       Instance = this;
+       Instance = this; // Assign this copy of GameManager to the 'Instance' var
 
-
+       // Reset the player's point value at the start of the level
        _playerPoints = 0;
    }
 
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
    private void Start()
    {
         UdpateUI();
-        AudioManager.Instance.PlaySound("MainTheme");
+        AudioManager.Instance.PlaySound("MainTheme"); // Tell the Audio Manager to play the theme music
    }
 
 
