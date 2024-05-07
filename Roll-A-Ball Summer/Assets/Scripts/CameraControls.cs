@@ -21,7 +21,10 @@ public class CameraControls : MonoBehaviour
     void LateUpdate()
     {
         //Move the camera to follow the player, using the offset to maintain the correct distance
-        transform.position = target.transform.position + positionOffset;
+        if (target != null) // If the camera's target variable is not empty, meaning it has a set object to follow
+        {
+            transform.position = target.transform.position + positionOffset;
+        }
     }
 }
 

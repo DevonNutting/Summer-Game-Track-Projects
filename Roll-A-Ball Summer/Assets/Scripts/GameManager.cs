@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -47,16 +48,25 @@ public class GameManager : MonoBehaviour
    }
 
 
-   public void UpdateUI() // A function that updates the score text with the current score variable
-   {
-        scoreText.text = score.ToString();
-   }
+    public void UpdateUI() // A function that updates the score text with the current score variable
+    {
+            scoreText.text = score.ToString();
+    }
 
-
-   public void WinGame() // A function that enables the victory text when the player has beat the level
-   {
+    public void WinGame() // A function that enables the victory text when the player has beat the level
+    {
         victoryTextObject.SetActive(true);
-   }
+    }
+
+    public void GameOver() // A function that is called whenever the player loses the game
+    {
+        Invoke("LoadCurrentLevel", 2f);
+    }
+
+    private void LoadCurrentLevel()
+    {
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
+    }
 }
 
 
