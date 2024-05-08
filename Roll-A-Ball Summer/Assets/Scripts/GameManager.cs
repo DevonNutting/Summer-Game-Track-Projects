@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
    public TextMeshProUGUI scoreText; // A variable to track the text object for the score
    public GameObject victoryTextObject; // A variable to track the text for the win condition; This text will appear once the player collects all pickups
    public GameObject pickupParent; // A variable that will hold the 'pickup parent' game object; we need this in order to count how many pickups are in the level at the start of the game
+   public Transform enemyParent; // A variable that holds the 'EnemyParent' gameObject. We use this to access & destory all enemies when the player wins
    [SerializeField] private int _pickupTotal = 0; // A variable to track how many pickups are in the level; we will count how many there are in the Start() method using the pickup parent
 
     public void Awake() 
@@ -50,13 +51,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUI() // A function that updates the score text with the current score variable
     {
-            scoreText.text = score.ToString();
+            scoreText.text = score.ToString() + " / " + _pickupTotal;
     }
 
     public void WinGame() // A function that enables the victory text when the player has beat the level
     {
         victoryTextObject.SetActive(true); // Enable the victory text so it appears on screen
-        AudioManager.Instance.PlaySound("Victory SFX"); // Tell the Audio Manager to play the Victory SFX
+        AudioManager.Instance.PlaySound("Victory SFX"); // Tell the Audio Manager to play the Victory SFX\
+
+        foreach (Transform enemy in enemyParent) Destroy(enemy.gameObject); // For each enemy nested inside the 'enemyParent', destroy each enemy
     }
 
     public void GameOver() // A function that is called whenever the player loses the game
