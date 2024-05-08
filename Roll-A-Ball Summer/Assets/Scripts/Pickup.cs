@@ -12,10 +12,10 @@ public class Pickup : MonoBehaviour
         // If The object this pickup was just touched by was the player: destory this pickup object
         if (other.gameObject.CompareTag("Player")) 
         {
-            pickedUp = true;
-            Destroy(this.gameObject);
+            pickedUp = true; // Mark this pickup as collected so it cannot be interacted with more than once
+            AudioManager.Instance.PlaySound("Collect Coin"); // Tell the AudioManager to play the SFX for picking this item up
             GameManager.Instance.UpdateScore(1); // Call the 'UpdateScore()' function from the GameManager script
-            Debug.Log("Pickup");
+            Destroy(this.gameObject);
         }
     }
 }

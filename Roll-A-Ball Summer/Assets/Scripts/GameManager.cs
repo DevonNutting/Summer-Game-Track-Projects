@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
 
     public void WinGame() // A function that enables the victory text when the player has beat the level
     {
-        victoryTextObject.SetActive(true);
+        victoryTextObject.SetActive(true); // Enable the victory text so it appears on screen
+        AudioManager.Instance.PlaySound("Victory SFX"); // Tell the Audio Manager to play the Victory SFX
     }
 
     public void GameOver() // A function that is called whenever the player loses the game

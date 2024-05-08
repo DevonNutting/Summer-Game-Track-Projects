@@ -36,6 +36,7 @@ public class PlayerControls : MonoBehaviour
             if (Input.GetButton("Jump")) // If the player presses the jump button...
             {
                 moveDirection.y = jumpForce; // Apply the jumpforce into vertical movement for the player
+                AudioManager.Instance.PlaySound("Player Jump"); // Tell the Audio Manager to play the jump SFX when the player jumps
             }
         } 
         else // Meaning the player is NOT grounded and therefore in the air... 

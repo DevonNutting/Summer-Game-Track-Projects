@@ -25,6 +25,7 @@ public class EnemyFollow : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) // if the object this enemy collided with is the player
         {
+            AudioManager.Instance.PlaySound("Player Death"); // Tell the AudioManager to play the SFX for the player dying.
             Destroy(other.gameObject); // Destroy the player
             GameManager.Instance.GameOver();
         }
