@@ -12,6 +12,7 @@ public class PlayerControls : MonoBehaviour
 
     public CharacterController controller; // Empty reference to the CharacterController component on the player
     private Vector3 moveDirection = Vector3.zero; // A vector (x, y, z) to dictate the direction the player moves in
+    public float rotationSpeed = 10f; // Speed at which the player rotates to face the movement direction
     #endregion
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class PlayerControls : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical"); // Stores the Vertical (Forward & Backward) input of the player
 
         Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput); // Calculate the direction the player should move based on the input
-        movement = transform.TransformDirection(movement); // Convert the direction into local space
+        //movement = transform.TransformDirection(movement); // Convert the direction into local space
         movement *= movementSpeed; 
 
         if (controller.isGrounded) // If the player is on the ground...
@@ -42,6 +43,13 @@ public class PlayerControls : MonoBehaviour
         else // Meaning the player is NOT grounded and therefore in the air... 
         {
             moveDirection.y -= gravity * Time.deltaTime; // Apply gravity to the player if they are not on the ground
+        }
+
+        // Rotate the player to face the direction of movement
+        if (movement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         controller.Move(moveDirection * Time.deltaTime); // Move the player with the characterController component
