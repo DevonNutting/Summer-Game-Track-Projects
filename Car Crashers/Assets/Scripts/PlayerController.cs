@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        _rb.AddForce(0, 0, _forwardForce * Time.deltaTime); // Move the car forward
+        _rb.AddForce(0, 0, _forwardForce * Time.deltaTime, ForceMode.Acceleration); // Move the car forward
 
-        if (Input.GetAxis("Horizontal") > 0) _rb.AddForce(_sidewaysForce * Time.deltaTime, 0, 0); // Move the player right
-        if (Input.GetAxis("Horizontal") < 0) _rb.AddForce(-_sidewaysForce * Time.deltaTime, 0, 0); // Move the player left
+        if (Input.GetAxis("Horizontal") > 0) _rb.AddForce(_sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange); // Move the player right
+        if (Input.GetAxis("Horizontal") < 0) _rb.AddForce(-_sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange); // Move the player left
 
     }
 }
