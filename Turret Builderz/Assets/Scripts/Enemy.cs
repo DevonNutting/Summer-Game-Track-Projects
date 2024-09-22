@@ -1,3 +1,5 @@
+// M.G.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +13,9 @@ public class Enemy : MonoBehaviour
     private int waypointIndex = 0; // Which waypoint is it currently at
     public int startHealth = 100;
     public int currentHealth;
+    public GameObject FastPrefab, SlowPrefab;
 
-    void Start()
+    public void Initialize()
     {
         currentHealth = startHealth;
 
