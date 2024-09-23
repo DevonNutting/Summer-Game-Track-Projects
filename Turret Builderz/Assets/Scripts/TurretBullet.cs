@@ -68,7 +68,7 @@ public class TurretBullet : MonoBehaviour
         Destroy(FX, .9f);
 
         Damage(target);
-        Destroy(target.gameObject, 0.3f);
+        // Destroy(target.gameObject, 0.3f);
     }
 
     void Damage(Transform enemy)

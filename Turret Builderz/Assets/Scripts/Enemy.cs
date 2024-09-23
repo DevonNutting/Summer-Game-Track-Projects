@@ -14,7 +14,9 @@ public class Enemy : MonoBehaviour
     public int startHealth = 100;
     public int currentHealth;
     public GameObject FastPrefab, SlowPrefab;
-
+    public AudioClip[] DieSounds;
+    public AudioClip DestinationSound;
+    
     public void Initialize()
     {
         currentHealth = startHealth;
@@ -45,6 +47,10 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             FindObjectOfType<GameManager>().enemiesLeft--; // Subtract from the list of enemies alive.
+            FindObjectOfType<GameManager>().score += Random.Range(40, 100);
+
+            int chosenSound = Random.Range(0, DieSounds.Length);
+            FindObjectOfType<GameManager>().CoreFXPlayer.PlayOneShot(DieSounds[chosenSound]);
 
             Destroy(gameObject);
         }
@@ -69,7 +75,10 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log($"<color=blue>[Enemy] </color> Enemy made it to the tower!");
 
+        FindObjectOfType<GameManager>().CoreFXPlayer.PlayOneShot(DestinationSound);
+
         FindObjectOfType<GameManager>().enemiesLeft--; // Subtract from the list of enemies alive.
+        FindObjectOfType<GameManager>().enemiesGotIn++;
 
         Destroy(gameObject);
     }

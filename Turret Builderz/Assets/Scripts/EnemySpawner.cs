@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject EnemyPrefab;
     public Transform EnemySpawnLocation;
     public float enemySpawnDelay = 1f;
-
+    public float waveDelayRangeLower = 4, waveDelayRangeUpper = 6;
     void Start()
     {
         enemiesToSpawn = FindObjectOfType<GameManager>().enemiesLeft;
@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(enemySpawnDelay);
             }
 
-            yield return new WaitForSeconds(Random.Range(4f, 6f));
+            yield return new WaitForSeconds(Random.Range(waveDelayRangeLower, waveDelayRangeUpper));
 
         }
     }

@@ -8,9 +8,10 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public int score, enemiesLeft = 100, enemiesGotIn;
-    [SerializeField] TextMeshProUGUI scoreText, enemiesLeftText, enemiesGotInText;
+    [SerializeField] TextMeshProUGUI scoreText, enemiesLeftText, enemiesGotInText, scoreTextWin;
     public Transform WaypointsParent;
     public AudioSource CoreFXPlayer;
+    public GameObject WinCanvas, MainCanvas;
     void Start()
     {
         CoreFXPlayer = GetComponent<AudioSource>();
@@ -23,7 +24,19 @@ public class GameManager : MonoBehaviour
         enemiesLeftText.text = "ENEMIES LEFT: "+ enemiesLeft.ToString("D3");
 
         enemiesGotInText.text = "ENEMIES GOT IN: "+enemiesGotIn.ToString();
+
+        if (enemiesLeft == 0) Invoke(nameof(WinGame), 3);
     }
 
+
+    public void WinGame()
+    {
+        
+        scoreTextWin.text = scoreText.text.Replace("SCORE: ", string.Empty);
+
+        WinCanvas.SetActive(true);
+        MainCanvas.SetActive(false);
+        
+    }
 }
 
