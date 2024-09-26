@@ -13,9 +13,11 @@ public class TurretBullet : MonoBehaviour
     private Transform target;
 
 
-    [Header("Attributes")]
+    [Header("Bullet Attributes [EDIT]")]
     [Tooltip("The speed that the bullet travels.")] [SerializeField] [Range(10, 150)] float speed = 70.0f;
     [Tooltip("The damage that the bullet does.")] [SerializeField] [Range(2, 1000)] public int power = 50;
+
+    [Space(10), Header("Technical [DO NOT EDIT]")]
     [Tooltip("The tag of the walls, or any object that the bullet can not go through.")] [SerializeField] string _solidObjectTag = "Can Stop Bullets";
     [Tooltip("The radius of the object collision checking.")] [SerializeField] float checkingRange = 1.0f;
     [Tooltip("The SFX that will play when the bullet hits.")] [SerializeField] GameObject hitSFX; // Yes, Super lazy way of doing it but whatever

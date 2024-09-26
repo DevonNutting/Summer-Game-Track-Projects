@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public int startHealth = 100;
     public int currentHealth;
     public GameObject FastPrefab, SlowPrefab;
+
     public AudioClip[] DieSounds;
     public AudioClip DestinationSound;
     
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
 
         foreach (Transform child in FindObjectOfType<GameManager>().WaypointsParent.GetComponentsInChildren<Transform>())
         {
-            if (child.name != "Waypoints") waypoints.Add(child);
+            if (child.name != "ENEMY WAYPOINTS") waypoints.Add(child);
         }
     }
 

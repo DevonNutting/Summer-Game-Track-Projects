@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 5686851774569265627}
   - component: {fileID: 5691303315959094963}
   m_Layer: 0
-  m_Name: Turret
+  m_Name: Canon Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
