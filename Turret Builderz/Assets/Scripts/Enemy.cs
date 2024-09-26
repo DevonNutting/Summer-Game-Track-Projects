@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     public List<Transform> waypoints;
     bool arrived;
-    Transform target;
+    [SerializeField]Transform target;
     public float speed = 7;
     private int waypointIndex = 0; // Which waypoint is it currently at
     public int startHealth = 100;
@@ -37,9 +37,10 @@ public class Enemy : MonoBehaviour
 
         transform.Translate(nextWaypoint.normalized * speed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= .05f) // The enemy will know to go to the next waypoint when it is 1.2 meters away from the current waypoint (target).
+        if (Vector3.Distance(transform.position, target.position) <= .75f) // The enemy will know to go to the next waypoint when it is 1.2 meters away from the current waypoint (target).
         {
             GetNextWaypoint();
+            Debug.Log("Reached Waypoint");
         }
 
         if (nextWaypoint != Vector3.zero) transform.LookAt(target.transform.position); // Make the enemy look towards the next waypoint
