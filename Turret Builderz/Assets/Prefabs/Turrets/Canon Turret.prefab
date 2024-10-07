@@ -179,17 +179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51a7a7641ec1a7418d1d2e19e07fb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
-  firePoint: {fileID: 5686678562229976269}
-  turnSpeed: 10
+  range: 49.5
+  fireRate: 5.73
+  turnSpeed: 3.7
+  fireSound: {fileID: 8300000, guid: c321e51bf5d49304e9c337206098f391, type: 3}
+  muzzleFlash: {fileID: 6115844751655179217, guid: e6634d6253e74b94d9160a565d679ff7, type: 3}
   enemyTag: Enemy
+  firePoint: {fileID: 5686678562229976269}
   fireAnimation: {fileID: 5691303315370973870}
   Hinge: {fileID: 5691303315370973871}
   BulletPrefab: {fileID: 8684997513177890673, guid: e86b16c22fccfc943bb721e27fe21d6d, type: 3}
-  fireRate: 1
   FxObject: {fileID: 3484548853187932045, guid: 526478f133ae0da4596775e238ca9547, type: 3}
-  fireSound: {fileID: 8300000, guid: c321e51bf5d49304e9c337206098f391, type: 3}
-  muzzleFlash: {fileID: 6115844751655179217, guid: e6634d6253e74b94d9160a565d679ff7, type: 3}
   target: {fileID: 0}
 --- !u!1 &5691791658632358267
 GameObject:

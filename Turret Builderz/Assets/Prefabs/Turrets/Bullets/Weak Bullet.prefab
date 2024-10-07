@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c587d7061bbf2742b27487f4bebcf68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
-  power: 15
+  speed: 128.9
+  power: 2
   _solidObjectTag: Wall
   checkingRange: 1
   hitSFX: {fileID: 2416855008969612086, guid: 2e127b65a44776247800ab46ac30a6b5, type: 3}

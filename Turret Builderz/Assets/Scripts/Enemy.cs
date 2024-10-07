@@ -8,15 +8,19 @@ public class Enemy : MonoBehaviour
 {
     public List<Transform> waypoints;
     bool arrived;
-    [SerializeField]Transform target;
-    public float speed = 7;
-    private int waypointIndex = 0; // Which waypoint is it currently at
-    public int startHealth = 100;
-    public int currentHealth;
-    public GameObject FastPrefab, SlowPrefab;
 
+    [Header("ENEMY STATS [EDIT]"), Space(5)]
+    public float speed = 7;
+    
+    public int startHealth = 100;
     public AudioClip[] DieSounds;
     public AudioClip DestinationSound;
+
+    [Space(10), Header("ENEMY SETUP [DO NOT EDIT]"), Space(5)]
+    [SerializeField]Transform target;
+    private int waypointIndex = 0; // Which waypoint is it currently at
+    public int currentHealth;
+    public GameObject FastPrefab, SlowPrefab;
     
     public void Initialize()
     {

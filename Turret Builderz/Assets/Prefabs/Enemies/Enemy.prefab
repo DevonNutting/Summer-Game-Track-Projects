@@ -233,17 +233,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  target: {fileID: 0}
   speed: 4
   startHealth: 100
-  currentHealth: 0
-  FastPrefab: {fileID: 7168311429112592877}
-  SlowPrefab: {fileID: 2315024034739123992}
   DieSounds:
   - {fileID: 8300000, guid: 249883de06d3af741a1a1c83f17b1573, type: 3}
   - {fileID: 8300000, guid: e26e65555bd42094993fb0119230e2ab, type: 3}
   - {fileID: 8300000, guid: bb7988838e8ef3248938dd8fce59d3fb, type: 3}
   DestinationSound: {fileID: 8300000, guid: 16cfe001b18ba7847b5f3c2c0a593b38, type: 3}
+  target: {fileID: 0}
+  currentHealth: 0
+  FastPrefab: {fileID: 7168311429112592877}
+  SlowPrefab: {fileID: 2315024034739123992}
 --- !u!1 &1947997775521196618
 GameObject:
   m_ObjectHideFlags: 0
