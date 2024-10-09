@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [Header("General")]
+    [Header("TURRET STATS [EDIT]"), Space(5)]
     [Tooltip("The range in which the turret can reach enemies from.")] [SerializeField] [Range(3, 100)] public float range = 15f;
-    [Tooltip("The tip of the turret that its bullets will fire from.")] [SerializeField] Transform firePoint;
-
+    [Tooltip("The speed in which the Turret fires bullets.")] [SerializeField] [Range(0, 15)] float fireRate = 1f;
     [Tooltip("The turn speed of the hinge. Doesn't affect how fast the turret fires.")] [SerializeField] [Range(0, 30)] float turnSpeed = 10f;
+
+    [Space(10), Header("TURRET SETTINGS [EDIT]"), Space(5)]
+    [Tooltip("The sound that can be heard when the gun is fired.")] [SerializeField] AudioClip fireSound;
+    [Tooltip("The muzzle flash for the gun.")] [SerializeField] GameObject muzzleFlash;
+
+    [Space(10), Header("TURRET SETUP [DO NOT EDIT]"), Space(5)]
     [Tooltip("The tag of the enemy. Ensure that all enemies have this tag name assigned to them.")] [SerializeField] string enemyTag = "Enemy";
+    [Tooltip("The tip of the turret that its bullets will fire from.")] [SerializeField] Transform firePoint;
     [Tooltip("The part that contains the fire animation.")] [SerializeField] Animation fireAnimation;
-
-    [Header("Bullet Preferences")]
-
     [Tooltip("The head part of the turret. This will turn to face its target, and should be the parent of the head of the turret.")] [SerializeField] Transform Hinge;
     [Tooltip("The 'TurretBullet' prefab that spawns each time an enemy is in range of the Turret.")] [SerializeField] GameObject BulletPrefab;
 
-    [Tooltip("The speed in which the Turret fires bullets.")] [SerializeField] [Range(0, 15)] float fireRate = 1f;
-
     [SerializeField] GameObject FxObject;
-    [Tooltip("The sound that can be heard when the gun is fired.")] [SerializeField] AudioClip fireSound;
-    [Tooltip("The muzzle flash for the gun.")] [SerializeField] GameObject muzzleFlash;
+    
+    
 
     private float fireCountdown;
     private float mzwaitTime = 1f;
