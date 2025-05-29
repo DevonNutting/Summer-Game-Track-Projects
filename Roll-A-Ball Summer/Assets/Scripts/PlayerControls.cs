@@ -21,7 +21,7 @@ public class PlayerControls : MonoBehaviour
         controller = GetComponent<CharacterController>(); // Get the CharacterController component attached to the player
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal"); // Stores the Horizontal (Left & Right) input of the player
         float verticalInput = Input.GetAxis("Vertical"); // Stores the Vertical (Forward & Backward) input of the player
