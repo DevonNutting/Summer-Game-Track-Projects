@@ -58,11 +58,11 @@ public class PlayerController : MonoBehaviour
 
        // MOVEMENT
        _xInput = Input.GetAxisRaw("Horizontal"); // Store movement input from the user (LEFT & RIGHT)
-       _rb.velocity = new Vector2(_xInput * _moveSpeed, _rb.velocity.y); // Apply the xInput to the velocity of the player & maintain the player's vertical velocity (jumping/fallig)
+       _rb.linearVelocity = new Vector2(_xInput * _moveSpeed, _rb.linearVelocity.y); // Apply the xInput to the velocity of the player & maintain the player's vertical velocity (jumping/fallig)
        // JUMP
        if (Input.GetButtonDown("Jump") && isGrounded()) // If the player presses the jump button & the player is on the ground...
        {
-           _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce); // Maintain the player's horizontal velocity & add a velocity upward
+           _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _jumpForce); // Maintain the player's horizontal velocity & add a velocity upward
             AudioManager.Instance.PlaySound("PlayerJump");         // Tell the Audio Manager to play the jump sound effect
 
        }
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
        }
 
 
-       switch (_rb.velocity.y)
+       switch (_rb.linearVelocity.y)
        {
            case > .01f: // JUMPING
                moveState = MovementState.jumping;

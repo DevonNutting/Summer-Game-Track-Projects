@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Pixel Adventure Final.sln"
+    "dotnet.defaultSolution": "Pixel Adventure Final.slnx"
 }
