@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 49.5
-  fireRate: 5.73
+  fireRate: 2
   turnSpeed: 3.7
   fireSound: {fileID: 8300000, guid: c321e51bf5d49304e9c337206098f391, type: 3}
   muzzleFlash: {fileID: 6115844751655179217, guid: e6634d6253e74b94d9160a565d679ff7, type: 3}
